@@ -65,33 +65,14 @@ export default class RandomJoke extends Component {
         const { joke, loaded } = this.state
 
         return (
-
-            <Container>
-                <Header 
-                    title="Chuck Norris Jokes"
-                />
-                <Content>
-
-                <Image
-                        style={image}
-                        source={{ uri: "https://assets.chucknorris.host/img/chucknorris_logo_coloured_small@2x.png" }}
-                    />
-                    {
-                        loaded ?
-                            <TouchableHighlight style={button} onPress={() => this.handlePress()}>
-                                <Text style={randomJoke}>{joke}</Text>
-                            </TouchableHighlight> :
-                            <View>
-                                <Text> Loading ... </Text>
-                                <ActivityIndicator size="large" color="#0000FF" />
-                            </View>
-                    }
-                </Content>
-
-                <Footer>
-                    <Text>hfhf</Text>
-                </Footer>
-            </Container>
+            loaded ?
+                <TouchableHighlight style={button} onPress={() => this.handlePress()}>
+                    <Text style={randomJoke}>{joke}</Text>
+                </TouchableHighlight> :
+                <View>
+                    <Text> Loading ... </Text>
+                    <ActivityIndicator size="large" color="#0000FF" />
+                </View>
         );
     }
 
@@ -120,13 +101,7 @@ export default class RandomJoke extends Component {
  * STYLES
  */
 
-const { container, randomJoke, button, image } = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+const { randomJoke, button } = StyleSheet.create({
     randomJoke: {
         padding: 10,
         backgroundColor: "#30d0fe",
@@ -139,11 +114,5 @@ const { container, randomJoke, button, image } = StyleSheet.create({
     button: {
         padding: 10,
         margin: 5,
-    },
-    image: {
-        width: w / 2,
-        height: h / 3,
-        resizeMode: 'contain'
     }
-
 });
